@@ -1,8 +1,12 @@
 # List of characters suported
 # Every new font must include these
-suported_chars = "0123456789abcdefghijklmnopqrstuvwxyz_-!. "
+suported_chars = "0123456789abcdefghijklmnopqrstuvwxyz_-!.' "
 
-# Small font
+# List of styles (fonts) that can be used
+# Every new font name must be included here
+font_styles = ["small"]
+
+# small
 # █▀█ ▄█ ▀█ ▀▀█ █ █ █▀ █▄▄ ▀▀█ █▀█ █▀█
 # █▄█  █ █▄ ▄██ ▀▀█ ▄█ █▄█   █ ███ ▀▀█
 #
@@ -28,7 +32,6 @@ suported_chars = "0123456789abcdefghijklmnopqrstuvwxyz_-!. "
 # █ █  █  █▄
 
 small = {
-    "nrows": 2,
     "0": ["█▀█", "█▄█"],
     "1": ["▄█", " █"],
     "2": ["▀█", "█▄"],
@@ -69,5 +72,6 @@ small = {
     "-": ["  ", "▀▀"],
     "!": ["█", "▄"],
     ".": [" ", "▄"],
+    "'": ["▀", " "],
     " ": [" ", " "],
 }

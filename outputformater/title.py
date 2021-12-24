@@ -16,7 +16,12 @@ def linetitle(txt, style="-", return_str=False):
     txt_size = len(txt)
     style = str(style)
 
-    if style in ["-", "|", "line"]:
+    if style in ["line", "-"]:
+        bl = "─"
+        lh = "─"
+        space = ""
+
+    if style in ["=", "double"]:
         bl = "─"
         lh = "─"
         space = ""
@@ -42,7 +47,7 @@ def boxtitle(txt, style="-", return_str=False):
     txt_size = len(txt)
     style = str(style)
 
-    if style in ["-", "|", "line"]:
+    if style in ["-", "line"]:
         lh = "─"
         lv = "│"
         tl = "╭"
@@ -57,7 +62,7 @@ def boxtitle(txt, style="-", return_str=False):
         bl = "├"
         br = "╯"
 
-    elif style in ["=", "||", "double"]:
+    elif style in ["=", "double"]:
         lh = "═"
         lv = "║"
         tl = "╔"
@@ -65,7 +70,7 @@ def boxtitle(txt, style="-", return_str=False):
         bl = "╚"
         br = "╝"
 
-    elif style in ["--", ".", "..", ":", "dots"]:
+    elif style in ["--", ".", "..", ":", "dots", "dashed"]:
         lh = "╌"
         lv = "┊"
         tl = "╭"
@@ -94,6 +99,13 @@ def boxtitle(txt, style="-", return_str=False):
 def bigtitle(txt, style="small", return_str=False):
 
     # Get the font_dict ot be used
+    if style not in fonts.font_styles:
+        error_message = (
+            f"'{style}' is not supported by 'bigtitle' \U0001F625"
+            + f"\nSupported styles: {fonts.font_styles}"
+        )
+        raise ValueError(error_message)
+
     font_dict = getattr(fonts, style)
 
     # Make sure it's a string an lowercase it
