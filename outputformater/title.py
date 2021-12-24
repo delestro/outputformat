@@ -1,5 +1,40 @@
 from outputformater import fonts
 
+# lh ➔ line horizontal
+# lv ➔ line vertical
+# tl ➔ top left
+# tr ➔ top right
+# bl ➔ bottom left
+# br ➔ bottom right
+
+
+def linetitle(txt, style="-", return_str=False):
+    # Start outputstring
+    outputstring = ""
+
+    txt = str(txt)
+    txt_size = len(txt)
+    style = str(style)
+
+    if style in ["-", "|", "line"]:
+        bl = "─"
+        lh = "─"
+        space = ""
+
+    elif style in ["line_hang", "hanging", "hang"]:
+        bl = "╭"
+        lh = "─"
+        space = " "
+
+    # Build string
+    outputstring += f"{space}{txt}\n"
+    outputstring += f"{bl}{lh*(txt_size-1)}{lh*len(space)}"
+
+    if return_str:
+        return outputstring
+    else:
+        print(outputstring)
+
 
 def boxtitle(txt, style="-", return_str=False):
 
@@ -14,6 +49,14 @@ def boxtitle(txt, style="-", return_str=False):
         tr = "╮"
         bl = "╰"
         br = "╯"
+    elif style in ["line_hang", "hanging", "hang"]:
+        lh = "─"
+        lv = "│"
+        tl = "╭"
+        tr = "╮"
+        bl = "├"
+        br = "╯"
+
     elif style in ["=", "||", "double"]:
         lh = "═"
         lv = "║"
