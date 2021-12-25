@@ -1,4 +1,5 @@
 from outputformater import fonts
+from outputformater import emoji
 
 # lh ➔ line horizontal
 # lv ➔ line vertical
@@ -101,7 +102,7 @@ def bigtitle(txt, style="small", return_str=False):
     # Get the font_dict ot be used
     if style not in fonts.font_styles:
         error_message = (
-            f"'{style}' is not supported by 'bigtitle' \U0001F625"
+            f"'{style}' is not supported by 'bigtitle' {emoji.sad}"
             + f"\nSupported styles: {fonts.font_styles}"
         )
         raise ValueError(error_message)
@@ -115,7 +116,7 @@ def bigtitle(txt, style="small", return_str=False):
     for char in txt:
         if char not in [supported for supported in fonts.suported_chars]:
             error_message = (
-                f"'{char}' is not supported by 'bigtitle' \U0001F625"
+                f"'{char}' is not supported by 'bigtitle' {emoji.sad}"
                 + f"\nSupported chars: {fonts.suported_chars}"
             )
             raise ValueError(error_message)
