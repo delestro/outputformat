@@ -10,6 +10,36 @@ from outputformater import emoji
 
 
 def linetitle(txt, style="-", return_str=False):
+    """Simple line under text.
+
+    Parameters
+    ----------
+    txt : string
+        Text to be displayed.
+
+    style : string
+        Style for the title. Options are: 'line', 'double', 'line_hang'
+        'line' or '-': single line under text
+        'double' or '=': double line under text
+        'line_hang': simple line with a hanger
+
+        If any other value is passed, it will be converted to string and
+        used as character for the line. For example:
+
+        >>> linetitle("Title with custom style", style="%")
+        Title with custom style
+        %%%%%%%%%%%%%%%%%%%%%%%
+
+    return_str : Bool, default: False
+        If True, returns a string instead of printing.
+
+    Returns
+    -------
+    string
+        Only returns in case 'return_str = True', otherwise None
+
+
+    """
     # Start outputstring
     outputstring = ""
 
@@ -17,20 +47,26 @@ def linetitle(txt, style="-", return_str=False):
     txt_size = len(txt)
     style = str(style)
 
+    # bl = bottom left
+    # lh = line horizontal
     if style in ["line", "-"]:
         bl = "─"
         lh = "─"
         space = ""
 
     if style in ["=", "double"]:
-        bl = "─"
-        lh = "─"
+        bl = "═"
+        lh = "═"
         space = ""
 
     elif style in ["line_hang", "hanging", "hang"]:
         bl = "╭"
         lh = "─"
         space = " "
+    else:
+        bl = str(style)[0]
+        lh = str(style)[0]
+        space = ""
 
     # Build string
     outputstring += f"{space}{txt}\n"
@@ -43,12 +79,38 @@ def linetitle(txt, style="-", return_str=False):
 
 
 def boxtitle(txt, style="-", return_str=False):
+    """Creates a text with a box decoration.
+
+    Parameters
+    ----------
+    txt : string
+        Text to be displayed.
+
+    style : string
+        Style of the box. Options are 'line', 'line_hang', 'double', 'dashes'
+        'line' or '-': Simple box with rounded corners
+        'line_hang': Box with hanger in the bottom-left corner
+        'double': Double line box
+        'dashes' or '--': Box with dashed line
+
+        If any other value is passed, it will be converted to
+        string and used as character for the box
+
+    return_str : Bool, default: False
+        If True, returns a string instead of printing.
+
+    Returns
+    -------
+    string
+        Only returns in case 'return_str = True', otherwise None
+
+    """
 
     txt = str(txt)
     txt_size = len(txt)
     style = str(style)
 
-    if style in ["-", "line"]:
+    if style in ["line", "-"]:
         lh = "─"
         lv = "│"
         tl = "╭"
@@ -63,7 +125,7 @@ def boxtitle(txt, style="-", return_str=False):
         bl = "├"
         br = "╯"
 
-    elif style in ["=", "double"]:
+    elif style in ["double", "="]:
         lh = "═"
         lv = "║"
         tl = "╔"
@@ -71,7 +133,7 @@ def boxtitle(txt, style="-", return_str=False):
         bl = "╚"
         br = "╝"
 
-    elif style in ["--", ".", "..", ":", "dots", "dashed"]:
+    elif style in ["dashes", "--", ".", "..", ":", "dots"]:
         lh = "╌"
         lv = "┊"
         tl = "╭"
@@ -98,6 +160,28 @@ def boxtitle(txt, style="-", return_str=False):
 
 
 def bigtitle(txt, style="small", return_str=False):
+    """uses ASCII art to generate a big title.
+
+    Parameters
+    ----------
+    txt : string
+        Text to be displayed.
+    style : string
+        Style used for the ASCII art, for the moment, only 'small' is supported
+
+        Fonts are defined in outputformater.fonts.py
+
+        Supported chars are: 0123456789abcdefghijklmnopqrstuvwxyz_-!.'
+
+    return_str : Bool, default: False
+        If True, returns a string instead of printing.
+
+    Returns
+    -------
+    string
+        Only returns in case 'return_str = True', otherwise None
+
+    """
 
     # Get the font_dict ot be used
     if style not in fonts.font_styles:

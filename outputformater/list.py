@@ -3,6 +3,40 @@ from outputformater.title import linetitle
 
 
 def showlist(data, style="bullet", title=False, return_str=False):
+    """Show each item of a given list.
+
+    Parameters
+    ----------
+    data : list
+        List of items to display. Anything passed here will be converted to list
+
+    style : string, default: 'bullet'
+        How items are displayed. Options are: 'bullet', 'line', 'box', 'ordinal'
+        'bullet' or '*': Simple bullet points
+        'line' or '-': Line under the title, connected to the items
+        'box': Title with a box decoration
+        'ordinal' or '#': Shows a numbered list in ascending order
+
+        In case any other string is passed, it will be used as marker
+        For example:
+        >>> showlist(["Item A", "Item B", "Item C"], style="~>")
+        ~> Item A
+        ~> Item B
+        ~> Item C
+
+    title : string, optional
+        Title to be displayed before the list.
+        In case 'title = False', the 'line' and 'box' styles give the same result
+
+    return_str : Bool, default: False
+        If True, returns a string instead of printing.
+
+    Returns
+    -------
+    string
+        Only returns in case 'return_str = True', otherwise None
+
+    """
 
     # Start outputstring
     outputstring = ""
