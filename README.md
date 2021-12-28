@@ -1,32 +1,93 @@
 # outputformater
-Python library to decorate and beautify strings
+Python library to decorate and beautify your standard output 💖
+
+![ouf_image_example](https://felipedelestro.files.wordpress.com/2021/12/ouf_notebook_example.png)
+
+## Installation
+To get the latest version, simply use pip:
+
+``` Python
+pip install outputformater
+```
 
 ## Basic usage
+
+It is recommended to use `ouf` as shortcut for `outputformater`:
+
 ``` Python
 import outputformater as ouf
-
-ouf.bigtitle("Welcome to ouf!")
-
-ouf.showlist(["Organize", "Explain", "Report"], style="line", title="Things you can do with ouf")
-
-values = [6, 3, 13, 8]
-titles = ["var", "long var name", "medium var", "variable"]
-ouf.barlist(values, titles, maxvalue=15, length=15, style="bar")
 ```
 
-Output:
-``` Text
-█ █ █ █▀▀ █   █▀▀ █▀█ █▀▄▀█ █▀▀   ▀█▀ █▀█   █▀█ █ █ █▀▀ █ 
-▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █ ▀ █ ██▄    █  █▄█   █▄█ █▄█ █▀  ▄ 
+Main functions are:
+* `ouf.boxtitle`
+* `ouf.linetitle`
+* `ouf.bigtitle`
+* `ouf.showlist`
+* `ouf.bar`
+* `ouf.barlist`
 
- Things you can do with ouf
-╭──────────────────────────
-├ Organize
-├ Explain
-╰ Report
+By default, functions `print` the result. You have the alternative to return a `string` instead, by passing the argument `return_str=True`  (nothing will be printed in this case).
 
-var..........: [■■■■■■         ]  6/15 ( 40.00%)
-long var name: [■■■            ]  3/15 ( 20.00%)
-medium var...: [■■■■■■■■■■■■■  ] 13/15 ( 86.67%)
-variable.....: [■■■■■■■■       ]  8/15 ( 53.33%)
+## Titles
+To decorate titles with a box around it, use `ouf.boxtitle`:
+```Python
+ouf.boxtitle("Long title in a box")
 ```
+```
+╭─────────────────────╮
+│ Long title in a box │
+╰─────────────────────╯
+```
+
+Boxes can have different styles:
+``` Python
+ouf.boxtitle("Box with 'line' style", style="line")
+ouf.boxtitle("Box with 'double' style", style="double")
+ouf.boxtitle("Box with 'dashes' style", style="dashes")
+```
+```
+╭───────────────────────╮
+│ Box with 'line' style │
+╰───────────────────────╯
+╔═════════════════════════╗
+║ Box with 'double' style ║
+╚═════════════════════════╝
+╭╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╮
+┊ Box with 'dashes' style ┊
+╰╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╯
+```
+
+Or you can pass any character and it will be used for the decoration:
+``` Python
+ouf.boxtitle("Box with custom character as style", style="ø")
+```
+```
+øøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøø
+ø Box with custom character as style ø
+øøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøøø
+```
+
+With all the same options as for `boxtitle`, you can use `linetitle` for a simple line underneath your text:
+```
+ouf.linetitle("Long title with 'double' underline", style="double")
+```
+```
+Long title with 'double' underline
+══════════════════════════════════
+```
+
+### Big title
+It is possible to use ASCII art to generate big titles:
+``` Python
+outputstring = ouf.bigtitle("Here's a big title!")
+```
+```
+█ █ █▀▀ █▀█ █▀▀ ▀ █▀   ▄▀█   █▄▄ █ █▀▀   ▀█▀ █ ▀█▀ █   █▀▀ █ 
+█▀█ ██▄ █▀▄ ██▄   ▄█   █▀█   █▄█ █ █▄█    █  █  █  █▄▄ ██▄ ▄
+```
+
+Currently, only one font is available, and the supported characters are: `"0123456789abcdefghijklmnopqrstuvwxyz_-!.' "`
+
+(You can get them by using `ouf.fonts.suported_chars`)
+
+
