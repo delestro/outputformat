@@ -197,8 +197,11 @@ ouf.bar(35, 50, style="circle", length=15, title="Circle style", title_pad=15)
 ```
 ```
 Block style....: ▓▓▓▓▓▓▓▓▓▓░░░░░ 35/50 ( 70.00%)
+
 Battery style..: ┫██████████     ┣ 35/50 ( 70.00%)
+
 Bar style......: [■■■■■■■■■■     ] 35/50 ( 70.00%)
+
 Circle style...: ●●●●●●●●●●○○○○○ 35/50 ( 70.00%)
 ```
 
@@ -211,8 +214,8 @@ ouf.bar(90, 100, style="star", length=5, title="Item C", show_percentage=False, 
 ```
 ```
 Item A: ⭐⭐⭐
-Item A: ⭐
-Item A: ⭐⭐⭐⭐
+Item B: ⭐
+Item C: ⭐⭐⭐⭐
 ```
 ### Custom bars
 
