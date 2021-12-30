@@ -1,7 +1,7 @@
 # outputformat
 Python library to decorate and beautify your standard output 💖
 
-![ouf_image_example](https://felipedelestro.files.wordpress.com/2021/12/ouf_notebook_example.png)
+![ouf_image_example](https://felipedelestro.files.wordpress.com/2021/12/ouf_intro.png)
 
 ## Installation
 To get the latest version, simply use pip:
