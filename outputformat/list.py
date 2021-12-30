@@ -1,5 +1,5 @@
-from outputformater.title import boxtitle
-from outputformater.title import linetitle
+from outputformat.title import boxtitle
+from outputformat.title import linetitle
 
 
 def showlist(data, style="bullet", title=False, return_str=False):

@@ -1,4 +1,4 @@
-from outputformater import emoji
+from outputformat import emoji
 
 
 def bar(
@@ -169,7 +169,7 @@ def barlist(
         In case None (or False) is given, uses the max value from all the values
 
     style : string
-        Style passed to outputformater.bar
+        Style passed to outputformat.bar
         Options are: 'block', 'battery', 'bar', 'circle', 'star'
         'block'.....: ▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░
         'battery'...: ┫████████████      ┣

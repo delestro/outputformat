@@ -1,5 +1,5 @@
-from outputformater import fonts
-from outputformater import emoji
+from outputformat import fonts
+from outputformat import emoji
 
 # lh ➔ line horizontal
 # lv ➔ line vertical
@@ -169,7 +169,7 @@ def bigtitle(txt, style="small", return_str=False):
     style : string
         Style used for the ASCII art, for the moment, only 'small' is supported
 
-        Fonts are defined in outputformater.fonts.py
+        Fonts are defined in outputformat.fonts.py
 
         Supported chars are: 0123456789abcdefghijklmnopqrstuvwxyz_-!.'
 

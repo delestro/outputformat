@@ -1,4 +1,4 @@
-# outputformater
+# outputformat
 Python library to decorate and beautify your standard output 💖
 
 ![ouf_image_example](https://felipedelestro.files.wordpress.com/2021/12/ouf_notebook_example.png)
@@ -7,7 +7,7 @@ Python library to decorate and beautify your standard output 💖
 To get the latest version, simply use pip:
 
 ``` Python
-pip install outputformater
+pip install outputformat
 ```
 There are **no dependencies**. 
 
@@ -15,10 +15,10 @@ There are **no dependencies**.
 
 ## Basic usage
 
-It is recommended to use `ouf` as shortcut for `outputformater`:
+It is recommended to use `ouf` as shortcut for `outputformat`:
 
 ``` Python
-import outputformater as ouf
+import outputformat as ouf
 ```
 
 Main functions are:
