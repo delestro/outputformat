@@ -1,8 +1,9 @@
 from outputformat.title import boxtitle
 from outputformat.title import linetitle
+from outputformat import tools
 
 
-def showlist(data, style="bullet", title=False, return_str=False):
+def showlist(data, style="bullet", title=False, return_str=False, precision=4):
     """Show each item of a given list.
 
     Parameters
@@ -41,8 +42,8 @@ def showlist(data, style="bullet", title=False, return_str=False):
     # Start outputstring
     outputstring = ""
 
-    # Make sure we have a list
-    data = list(data)
+    # Prepare and clean data
+    data = tools.prepare_data(data, precision=precision)
 
     if style in ["bullet", "bullets", "dot", "dots", ".", "*"]:
         marker_first = "•"

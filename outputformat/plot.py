@@ -9,6 +9,8 @@ def bar(
     title=False,
     title_pad=0,
     show_values=True,
+    values_pad=0,
+    values_precision=2,
     show_percentage=True,
     return_str=False,
 ):
@@ -132,7 +134,8 @@ def bar(
     outputstring += end
 
     if show_values:
-        outputstring += f" {value:>{len(str(maxvalue))}}/{maxvalue}"
+        values_pad += values_precision + 1
+        outputstring += f" {value:>{values_pad}.{values_precision}f}/{maxvalue:.{values_precision}f}"
 
     if show_percentage:
         outputstring += f" ({value/maxvalue:>7.2%})"
@@ -145,11 +148,12 @@ def bar(
 
 def barlist(
     values,
-    titles,
+    titles=False,
     maxvalue=False,
-    style="circle",
+    style="bar",
     length=32,
     show_values=True,
+    values_precision=2,
     show_percentage=True,
     return_str=False,
 ):
@@ -212,12 +216,22 @@ def barlist(
 
     """
 
+    # If titles are not provided, make an empty list
+    if not titles:
+        titles = [""] * len(values)
+
+    # Negative values are not suported
+    if min(values) < 0:
+        raise ValueError("Negative values are not supported")
+
+    # Check if titles match values
     if len(values) != len(titles):
         errormsg = f"'values' and 'titles' mus have the same length {emoji.sad}"
         errormsg += f"\ntotal values: {len(values)}"
         errormsg += f"\ntotal titles: {len(titles)}"
         raise ValueError(errormsg)
 
+    # Initialize string
     outputstring = ""
 
     # In case maxvalue is no given,
@@ -227,6 +241,8 @@ def barlist(
 
     # Get the longest title to use the proper padding
     longest_title = len(max(titles, key=len))
+
+    longest_value = len(str(int(maxvalue)))
 
     # Create each row
     for idx in range(len(values)):
@@ -238,6 +254,8 @@ def barlist(
             title_pad=longest_title,
             length=length,
             show_values=show_values,
+            values_pad=longest_value,
+            values_precision=values_precision,
             show_percentage=show_percentage,
             return_str=True,
         )
