@@ -21,7 +21,7 @@ setup(
     author="Felipe Delestro",
     author_email="delestro@gmail.com",
     url="https://github.com/delestro/outputformat",
-    download_url="https://github.com/delestro/outputformat/archive/refs/tags/v0.1.1.tar.gz",
+    download_url="https://github.com/delestro/outputformat/archive/refs/tags/v0.1.2.tar.gz",
     license="MIT",
     keywords=["output", "print", "decorate", "format", "string", "beautify"],
     python_requires=">=3.6",
