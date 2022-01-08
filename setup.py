@@ -15,7 +15,7 @@ long_description += "(nothing will be printed in this case)."
 setup(
     name="outputformat",
     packages=["outputformat"],
-    version="0.1.1",
+    version="0.1.2",
     description="Decorate and beautify output",
     long_description=long_description,
     author="Felipe Delestro",
