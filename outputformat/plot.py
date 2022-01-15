@@ -73,7 +73,7 @@ def bar(
     """
 
     # Check if value < maxvalue
-    if value > maxvalue:
+    if value and value > maxvalue:
         raise ValueError(f"'value' cannot be bigger than 'maxvalue' {emoji.crazy}")
 
     if style in ["block"]:
@@ -127,8 +127,8 @@ def bar(
 
         outputstring += f"{title:.<{title_pad}}: "
 
-    # Check if it's not a NaN
-    if value == value:
+    # Check if it's not a NaN or None
+    if value == value and value:
 
         ratio = value / maxvalue
         nfill = int(ratio * length)
@@ -224,12 +224,16 @@ def barlist(
         titles = [""] * len(values)
 
     # Negative values are not suported
-    if min(values) < 0:
-        raise ValueError("Negative values are not supported")
+    for value in values:
+        try:
+            if value < 0:
+                raise ValueError("Negative values are not supported")
+        except:
+            pass
 
     # Check if titles match values
     if len(values) != len(titles):
-        errormsg = f"'values' and 'titles' mus have the same length {emoji.sad}"
+        errormsg = f"'values' and 'titles' must have the same length {emoji.sad}"
         errormsg += f"\ntotal values: {len(values)}"
         errormsg += f"\ntotal titles: {len(titles)}"
         raise ValueError(errormsg)
@@ -240,7 +244,8 @@ def barlist(
     # In case maxvalue is no given,
     # uses the max from all the values
     if not maxvalue:
-        maxvalue = max(values)
+        # Get the max without breaking in case we find a "None"
+        maxvalue = max([v for v in values if v])
 
     # Convert all titles to strings
     titles = [str(t) for t in titles]
