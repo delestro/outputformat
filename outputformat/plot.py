@@ -120,25 +120,28 @@ def bar(
             empty = " " * len(str(style))
             end = "]"
 
-    ratio = value / maxvalue
-    nfill = int(ratio * length)
-
     # Start outputstring
     outputstring = ""
     if title:
         title = str(title)
 
         outputstring += f"{title:.<{title_pad}}: "
-    outputstring += start
-    outputstring += f"{fill*nfill}{empty*(length-nfill)}"
-    outputstring += end
 
-    if show_values:
-        values_pad += values_precision + 1
-        outputstring += f" {value:>{values_pad}.{values_precision}f}/{maxvalue:.{values_precision}f}"
+    # Check if it's not a NaN
+    if value == value:
 
-    if show_percentage:
-        outputstring += f" ({value/maxvalue:>7.2%})"
+        ratio = value / maxvalue
+        nfill = int(ratio * length)
+        outputstring += start
+        outputstring += f"{fill*nfill}{empty*(length-nfill)}"
+        outputstring += end
+
+        if show_values:
+            values_pad += values_precision + 1
+            outputstring += f" {value:>{values_pad}.{values_precision}f}/{maxvalue:.{values_precision}f}"
+
+        if show_percentage:
+            outputstring += f" ({value/maxvalue:>7.2%})"
 
     if return_str:
         return outputstring
@@ -239,6 +242,8 @@ def barlist(
     if not maxvalue:
         maxvalue = max(values)
 
+    # Convert all titles to strings
+    titles = [str(t) for t in titles]
     # Get the longest title to use the proper padding
     longest_title = len(max(titles, key=len))
 
