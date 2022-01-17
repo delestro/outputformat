@@ -36,9 +36,9 @@ def showdict(data, style="line", title=False, return_str=False, precision=4):
         # In case value is a list, fix display
         if isinstance(value, list):
             clean_value = ""
-            for idx, sub_value in enumerate(value):
+            for sub_idx, sub_value in enumerate(value):
                 clean_value += f"{sub_value}"
-                if idx < len(value) - 1:
+                if sub_idx < len(value) - 1:
                     clean_value += ", "
 
             value = clean_value
