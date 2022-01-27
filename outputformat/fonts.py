@@ -1,6 +1,6 @@
 # List of characters suported
 # Every new font must include these
-suported_chars = "0123456789abcdefghijklmnopqrstuvwxyz_-!?.' "
+suported_chars = "0123456789abcdefghijklmnopqrstuvwxyz_-+!?.' "
 
 # List of styles (fonts) that can be used
 # Every new font name must be included here
@@ -70,6 +70,7 @@ small = {
     "z": ["▀█", "█▄"],
     "_": ["   ", "▄▄▄"],
     "-": ["  ", "▀▀"],
+    "+": [" ▄ ", "▀█▀"],
     "!": ["█", "▄"],
     "?": ["█▀█", "  ▄"],
     ".": [" ", "▄"],
