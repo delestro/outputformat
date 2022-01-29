@@ -1,5 +1,6 @@
 from outputformat import fonts
 from outputformat import emoji
+import outputformat as ouf
 
 # lh ➔ line horizontal
 # lv ➔ line vertical
@@ -78,7 +79,7 @@ def linetitle(txt, style="-", return_str=False):
         print(outputstring)
 
 
-def boxtitle(txt, style="-", return_str=False):
+def boxtitle(txt, style="-", return_str=False, color=False, cmap="cool", bold=False):
     """Creates a text with a box decoration.
 
     Parameters
@@ -153,13 +154,16 @@ def boxtitle(txt, style="-", return_str=False):
         + (bl + (lh * (txt_size + 2) + br))
     )
 
+    if color:
+        outputstring = ouf.c(outputstring, color, cmap=cmap, bold=bold, return_str=True)
+
     if return_str:
         return outputstring
     else:
         print(outputstring)
 
 
-def bigtitle(txt, style="small", return_str=False):
+def bigtitle(txt, style="small", return_str=False, color=False, cmap="cool"):
     """uses ASCII art to generate a big title.
 
     Parameters
@@ -214,6 +218,8 @@ def bigtitle(txt, style="small", return_str=False):
             outputstring += " "
         outputstring += "\n"
 
+    if color:
+        outputstring = ouf.c(outputstring, color, cmap=cmap, return_str=True)
     if return_str:
         return outputstring
     else:
