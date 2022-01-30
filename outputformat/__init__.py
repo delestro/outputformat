@@ -6,3 +6,6 @@ from outputformat.plot import bar
 from outputformat.plot import barlist
 from outputformat.dict import showdict
 from outputformat.misc import br
+from outputformat.misc import b
+from outputformat.color import c
+from outputformat.color import rainbow
