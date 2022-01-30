@@ -1,4 +1,21 @@
-# Simply a list of shortcuts for the unicode emoji
+# Simply a list of shortcuts for the emoji unicode
+
+supported_list = [
+    "crazy",
+    "sad",
+    "circle_red",
+    "circle_orange",
+    "circle_yellow",
+    "circle_green",
+    "circle_white",
+    "circle_black",
+    "star",
+    "heart",
+    "thumbs_up",
+    "check",
+    "clap",
+    "bomb",
+]
 
 crazy = "\U0001F92A"
 sad = "\U0001F625"
