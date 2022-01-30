@@ -10,7 +10,7 @@ import outputformat as ouf
 # br ➔ bottom right
 
 
-def linetitle(txt, style="-", return_str=False):
+def linetitle(txt, style="-", color=False, cmap="cool", bold=False, return_str=False):
     """Simple line under text.
 
     Parameters
@@ -55,7 +55,7 @@ def linetitle(txt, style="-", return_str=False):
         lh = "─"
         space = ""
 
-    if style in ["=", "double"]:
+    elif style in ["=", "double"]:
         bl = "═"
         lh = "═"
         space = ""
@@ -72,6 +72,12 @@ def linetitle(txt, style="-", return_str=False):
     # Build string
     outputstring += f"{space}{txt}\n"
     outputstring += f"{bl}{lh*(txt_size-1)}{lh*len(space)}"
+
+    if color:
+        outputstring = ouf.c(outputstring, color, cmap=cmap, bold=bold, return_str=True)
+
+    if bold:
+        outputstring = ouf.b(outputstring, return_str=True)
 
     if return_str:
         return outputstring
@@ -156,6 +162,9 @@ def boxtitle(txt, style="-", return_str=False, color=False, cmap="cool", bold=Fa
 
     if color:
         outputstring = ouf.c(outputstring, color, cmap=cmap, bold=bold, return_str=True)
+
+    if bold:
+        outputstring = ouf.b(outputstring, return_str=True)
 
     if return_str:
         return outputstring
