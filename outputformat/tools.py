@@ -3,6 +3,7 @@ from outputformat.title import boxtitle
 from outputformat import emoji
 import colorsys
 from random import random
+from re import sub
 
 
 def prepare_data(input_data, precision):
@@ -203,3 +204,15 @@ def parse_color(color, cmap):
             color = (random(), default_saturation, 1)
 
     return color
+
+def real_string_length(txt):
+    """Compute the length of the strings without the ANSI escape sequences
+
+    Returns
+    -------
+    int
+        real length of the string txt
+
+    """
+    pattern = "\x1b\[[;\d]*m"
+    return len(sub(pattern,"",txt))
