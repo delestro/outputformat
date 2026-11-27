@@ -45,7 +45,7 @@ def linetitle(txt, style="-", color=False, cmap="cool", bold=False, return_str=F
     outputstring = ""
 
     txt = str(txt)
-    txt_size = len(txt)
+    txt_size = ouf.tools.real_string_length(txt)
     style = str(style)
 
     # bl = bottom left
@@ -114,7 +114,7 @@ def boxtitle(txt, style="-", return_str=False, color=False, cmap="cool", bold=Fa
     """
 
     txt = str(txt)
-    txt_size = len(txt)
+    txt_size = ouf.tools.real_string_length(txt)
     style = str(style)
 
     if style in ["line", "-"]:
